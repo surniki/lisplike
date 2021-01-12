@@ -48,11 +48,12 @@ From the debugger: "Attempted to use [FACT] as a function."
 #+end_src
 
 Without named recursion or ~let~, can the factorial program be
-implemented?  Both of these constructs can be implemented using lambda
-expressions, so we can proceed without too much hassle by using the Y
-combinator as a substitute for named recursion and the local variable
-bindings created by ~lambda~ as a substitute for ~let~ expressions.
-First, we can implement the Y combinator.
+implemented using the recursive definition?  Both of these constructs
+can be implemented using lambda expressions, so we can proceed without
+too much hassle by using the Y combinator as a substitute for named
+recursion and the local variable bindings created by ~lambda~ as a
+substitute for ~let~ expressions.  First, we can implement the Y
+combinator.
 
 #+begin_example
 lisplike> (define fix ((lambda (d) (d d)) (lambda (w)
@@ -72,7 +73,7 @@ lisplike> (define fact ((lambda (f) (lambda (n) ((fix f) n))) (lambda (f)
 FACT
 #+end_example
 
-Finally, we can test this ~fact~ out on a few values to see it work!
+Finally, we can test the new version of ~fact~ out on a few values to see it work!
 #+begin_example
 lisplike> (do
             (display (fact 0))
